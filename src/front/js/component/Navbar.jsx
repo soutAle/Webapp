@@ -1,19 +1,21 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/navbar.css"; 
+import { IoPersonCircleOutline, IoLogOutOutline } from "react-icons/io5";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const navigate = useNavigate();
 	const handleLogOutRedirect = () => {
-		actions.logOut()
-		navigate("/")
-	}
+		actions.logOut();
+		navigate("/");
+	};
 
 	return (
-		<nav className="navbar navbar-dark bg-dark">
+		<nav className="navbar custom-navbar">
 			<div className="container-fluid">
-				<Link className="navbar-brand ms-3" to={"/"}>
+				<Link className="navbar-brand ms-3 text-white" to={"/"}>
 					Finder
 				</Link>
 				<button
@@ -27,12 +29,12 @@ export const Navbar = () => {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div
-					className="offcanvas offcanvas-end text-bg-dark"
+					className="offcanvas offcanvas-end"
 					tabIndex="-1"
 					id="offcanvasDarkNavbar"
 					aria-labelledby="offcanvasDarkNavbarLabel"
 				>
-					<div className="offcanvas-header bg-dark">
+					<div className="offcanvas-header">
 						<h5 className="offcanvas-title text-white" id="offcanvasDarkNavbarLabel">
 							Finder
 						</h5>
@@ -43,7 +45,7 @@ export const Navbar = () => {
 							aria-label="Close"
 						></button>
 					</div>
-					<div className="offcanvas-body bg-dark">
+					<div className="offcanvas-body">
 						<ul className="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3">
 							<li className="nav-item">
 								<Link className="nav-link active" aria-current="page" to={"/"}>
@@ -80,7 +82,7 @@ export const Navbar = () => {
 										<hr className="dropdown-divider" />
 									</li>
 									<li>
-										<Link className="dropdown-item" to={"/"}>
+										<Link className="dropdown-item" to={"/"} onClick={handleLogOutRedirect}>
 											Cerrar Sesión
 										</Link>
 									</li>
@@ -101,8 +103,8 @@ export const Navbar = () => {
 					</div>
 				</div>
 
-				<div className="d-none d-md-flex">
-					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5">
+				<div className="d-none d-md-flex pe-5">
+					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
 						<li className="nav-item">
 							<Link className="nav-link active" aria-current="page" to={"/"}>
 								Inicio
@@ -115,7 +117,7 @@ export const Navbar = () => {
 						</li>
 						<li className="nav-item">
 							<Link className="nav-link active" aria-current="page" to={"/"}>
-								Home
+								Inicio
 							</Link>
 						</li>
 						<li className="nav-item">
@@ -124,16 +126,17 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item dropdown">
+							
 							<Link
-								className="nav-link dropdown-toggle"
+								className="nav-link mt-2"
 								to={"/"}
 								role="button"
 								data-bs-toggle="dropdown"
 								aria-expanded={false}
 							>
-								Dropdown
+								<IoPersonCircleOutline />
 							</Link>
-							<ul className="dropdown-menu dropdown-menu-dark">
+							<ul className="dropdown-menu">
 								<li>
 									<Link className="dropdown-item" to={"/"}>
 										Perfil
@@ -148,7 +151,8 @@ export const Navbar = () => {
 									<hr className="dropdown-divider" />
 								</li>
 								<li>
-									<Link className="dropdown-item" to={"/"}>
+									<Link className="dropdown-item" to={"/"} onClick={handleLogOutRedirect}>
+										<IoLogOutOutline />
 										Cerrar Sesión
 									</Link>
 								</li>

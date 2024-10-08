@@ -1,0 +1,49 @@
+.custom-navbar, .offcanvas, 
+.offcanvas-header, .offcanvas-header {
+    background-color: rgb(2, 47, 92);
+
+}
+
+.navbar-nav-text li a{
+    color: white;
+}
+
+.navbar-nav-text li a:hover{
+    color: rgb(107, 177, 252);
+}
+
+.navbar-nav-text li:last-child svg{
+    color: white;
+    font-size: 2rem;
+}
+.navbar-nav-text li:last-child svg:hover{
+    color: rgb(107, 177, 252);
+    font-size: 2rem;
+}
+
+
+.dropdown-menu {
+    margin-right: 50px;
+    color: white;
+    background-color: rgb(107, 177, 252);;
+    border: none; 
+}
+
+.dropdown-item {
+    color: #ffffff;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item svg {
+    font-size: 0.8rem;
+}
+
+.navbar-toggler{
+    color: white;
+    border: 1px solid white;
+}
+.navbar-toggler-icon {
+    color: aliceblue;
+}
+
