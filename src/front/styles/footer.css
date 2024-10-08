@@ -1,0 +1,35 @@
+.footer {
+    color: white;
+    background-color: rgb(2, 47, 92);
+}
+
+.text-footer {
+    font-size: 0.8rem;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.footer-link:hover {
+    color: rgb(179, 220, 255);
+    transition: 0.3s;
+}
+
+.footer-icons li a {
+    color: inherit; 
+    transition: color 0.3s;
+}
+
+.footer-icons li a:hover {
+    color: #1877F2; 
+}
+
+.footer-icons li:nth-child(2) a:hover {
+    color: #C13584; 
+}
+
+.footer-icons li:nth-child(3) a:hover {
+    color: #1DA1F2; 
+}
