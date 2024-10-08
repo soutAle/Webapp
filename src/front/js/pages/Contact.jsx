@@ -9,7 +9,7 @@ export const Contact = () =>{
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <h1 className="header-title">
+                    <h1 className="header-title text-center mt-5">
                         Bienvenido a las Ofertas
                     </h1>
                 </div>

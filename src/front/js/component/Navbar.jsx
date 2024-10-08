@@ -67,13 +67,13 @@ export const Navbar = () => {
 								</Link>
 								<ul className="dropdown-menu dropdown-menu-dark">
 									<li>
-										<Link className="dropdown-item" to={"/"}>
-											Action
+										<Link className="dropdown-item" to={"/profiledeveloper"}>
+											Perfil
 										</Link>
 									</li>
 									<li>
-										<Link className="dropdown-item" to={"/"}>
-											Another action
+										<Link className="dropdown-item" to={"/myoffers"}>
+											Mis Ofertas
 										</Link>
 									</li>
 									<li>
@@ -81,7 +81,7 @@ export const Navbar = () => {
 									</li>
 									<li>
 										<Link className="dropdown-item" to={"/"}>
-											Something else here
+											Cerrar Sesión
 										</Link>
 									</li>
 								</ul>
@@ -136,12 +136,12 @@ export const Navbar = () => {
 							<ul className="dropdown-menu dropdown-menu-dark">
 								<li>
 									<Link className="dropdown-item" to={"/"}>
-										Action
+										Perfil
 									</Link>
 								</li>
 								<li>
 									<Link className="dropdown-item" to={"/"}>
-										Another action
+										Mis Ofertas
 									</Link>
 								</li>
 								<li>
@@ -149,7 +149,7 @@ export const Navbar = () => {
 								</li>
 								<li>
 									<Link className="dropdown-item" to={"/"}>
-										Something else here
+										Cerrar Sesión
 									</Link>
 								</li>
 							</ul>
