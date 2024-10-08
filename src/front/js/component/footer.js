@@ -9,7 +9,7 @@ export const Footer = () => (
 			<div className="row text-center text-md-start">
 				<div className="col-md-6 mb-3 mb-md-0">
 					<div className="text-footer d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center align-items-md-start">
-						<ul className="list-unstyled d-flex flex-column flex-md-row">
+						<ul className="list-unstyled d-flex flex-column text-center flex-md-row mt-3">
 							<li>
 								<Link className="me-3 mb-2 mb-md-0 footer-link" to="/about">
 									Sobre nosotros
