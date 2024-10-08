@@ -13,7 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
     country = db.Column(db.String(20), nullable=False)
-    
+
     # Relaciones
     profile_develop = db.relationship("Developer", backref="user", uselist=False)
     profile_company = db.relationship("Company", backref="user", uselist=False)
@@ -36,8 +36,6 @@ class User(db.Model):
             "candidates": [candidate.serialize() for candidate in self.candidates] if self.candidates else None
         }
 
-
-    
 class Developer(db.Model):
     __tablename__ = "developers"
     
@@ -46,12 +44,12 @@ class Developer(db.Model):
     last_name = db.Column(db.String(20), nullable=False)
     description = db.Column(db.String(200), nullable=False)
     location = db.Column(db.String(20), nullable=False)
-    
+
     # Clave foránea que referencia a User
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     # Relación con proyectos
-    projects = db.relationship("Project", back_populates="developer", lazy=True)
+    projects = db.relationship("Project", backref="developer", lazy=True)
 
     def __repr__(self):
         return f'<Developer {self.name} {self.last_name}>'
@@ -66,7 +64,6 @@ class Developer(db.Model):
             "projects": [project.serialize() for project in self.projects] if self.projects else None
         }
 
-
 class Project(db.Model):
     __tablename__ = "projects"
     
@@ -75,11 +72,9 @@ class Project(db.Model):
     description = db.Column(db.String(200), nullable=False)
     technologies = db.Column(db.String(140), nullable=False)
     category = db.Column(db.String(200), nullable=False)
-    
+
     # Clave foránea que referencia a Developer
     developer_id = db.Column(db.Integer, db.ForeignKey('developers.id'), nullable=False)
-
-    developer = db.relationship("Developer", back_populates="projects")
 
     def __repr__(self):
         return f'<Project {self.title}>'
@@ -91,7 +86,6 @@ class Project(db.Model):
             "description": self.description,
             "developer_id": self.developer_id
         }
-
 
 class Candidate(db.Model):
     __tablename__ = "candidates"
@@ -115,3 +109,60 @@ class Candidate(db.Model):
             "user_id": self.user_id
         }
 
+class Offer(db.Model):
+    __tablename__ = "offers"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    location = db.Column(db.String(100), nullable=False)
+    salary = db.Column(db.Float, nullable=False)
+    contract_type = db.Column(db.String(50), nullable=False)
+
+    # Clave foránea que referencia a Company
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Offer {self.title}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "location": self.location,
+            "salary": self.salary,
+            "contract_type": self.contract_type,
+            "company_id": self.company_id
+        }
+
+class Company(db.Model):
+    __tablename__ = "companies"
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    location = db.Column(db.String(50), nullable=False)
+    website = db.Column(db.String(120), nullable=True)
+    logo = db.Column(db.String(200), nullable=True)
+
+    # Clave foránea que referencia a User
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    # Relación con la tabla 'offers'
+    offers = db.relationship("Offer", backref="company", lazy=True)
+
+    def __repr__(self):
+        return f'<Company {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "location": self.location,
+            "website": self.website,
+            "logo": self.logo,
+            "user_id": self.user_id,
+            "offers": [offer.serialize() for offer in self.offers] if self.offers else None
+        }
