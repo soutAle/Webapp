@@ -106,15 +106,15 @@ def login():
         print(f"Error en login: {str(e)}")  
         return jsonify({'success': False, 'msg': 'Ocurrió un error interno, por favor intenta de nuevo.'}), 500
 
-# @api.route('/private', methods=['GET'])
-# @jwt_required()
-# def page_private():
-#     user_id = get_jwt_identity()
-#     user = User.query.get(user_id)
+@api.route('/private', methods=['GET'])
+@jwt_required()
+def page_private():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
 
-#     if user:
-#         return jsonify({'success': True, 'msg': 'Has logrado entrar a una página privada'}), 200
-#     return jsonify({'success': False, 'msg': 'No estás logeado'}), 400
+    if user:
+        return jsonify({'success': True, 'msg': 'Has logrado entrar a una página privada'}), 200
+    return jsonify({'success': False, 'msg': 'No estás logeado'}), 400
 
 @api.route('/token', methods=['GET'])
 @jwt_required()
@@ -130,3 +130,27 @@ def token():
         }), 200
     else:
         return jsonify({"msg": "Usuario no encontrado"}), 404
+
+@api.route('/user/<int:user_id>/bookmarks', methods=['GET'])
+def get_user_bookmark(user_id):
+    user = User.query.get(user_id)
+    
+    if not user:
+        return jsonify({"success": False, 'msg': 'Usuario no encontrado'}), 404
+    
+    bookmarks = []
+    results = []
+    def loader(el):        
+        if el['offer_id'] is not None:
+            results.append(Offer.query.get(el['offer_id']))
+        elif el['company_id'] is not None:
+            results.append(Company.query.get(el['company_id']))
+        else:
+            return ({"success": True, "msg": "El usuario no tiene favortios "}), 418
+            
+    if user.profile_develop:
+        bookmarks.extend(user.profile_develop.bookmarks)
+        bookmarks = [loader(bookmark.serialize()) for bookmark in bookmarks]
+    if user.profile_company:
+        bookmarks.extend(user.profile_company.bookmarks)  
+    return jsonify({"success": True, "bookmarks": [result.serialize() for result in results]}), 200

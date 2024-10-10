@@ -168,3 +168,25 @@ class Company(db.Model):
             "user_id": self.user_id,
             "offers": [offer.serialize() for offer in self.offers] if self.offers else None
         }
+    
+
+class bookmark(db.Model):
+    __tablename__ = "bookmarks"
+    id = db.Column(db.Integer, primary_key=True)
+
+    # Claves foraneas que representan aa Developer, Company y Offer
+    developer_id = db.Column(db.Integer, db.ForeignKey("developers.id"), nullable=True)
+    company_id = db.Column(db.Integer, db.ForeignKey("companies.id"), nullable=True)
+    offer_id = db.Column(db.Integer, db.ForeignKey("offers.id"), nullable=True)
+
+    def __repr__(self):
+        return f'<Favoritos {self.developer_id}-{self.company_id}-{self.offer_id}>'
+
+    def serialize(self):
+        return {
+            "developer_id": self.programador_id,
+            "company_id": self.company_id,
+            "offer_id": self.offer_id
+        }
+    
+    
