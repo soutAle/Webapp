@@ -8,11 +8,12 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    photo = db.Column(db.String(200))
-    telephone = db.Column(db.String(30), unique=True)
+    photo = db.Column(db.String(250), nullable=True)
+    telephone = db.Column(db.String(30), unique=True, nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), nullable=False)
-    country = db.Column(db.String(20), nullable=False)
+    password = db.Column(db.String(180), nullable=False)
+    is_active = db.Column(db.Boolean, default=False)
+    country = db.Column(db.String(20), nullable=True)
 
     # Relaciones
     profile_develop = db.relationship("Developer", backref="user", uselist=False)
@@ -30,6 +31,7 @@ class User(db.Model):
             "photo": self.photo,
             "telephone": self.telephone,
             "email": self.email,
+            "is_active": self.is_active,
             "country": self.country,
             "profile_develop": self.profile_develop.serialize() if self.profile_develop else None,
             "profile_company": self.profile_company.serialize() if self.profile_company else None,
