@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data)
 						localStorage.setItem('token', data.token);
 						setStore({ token: data.token, user: data.user });
-						getActions().getFavorites(data.user.id)
+						// getActions().getFavorites(data.user.id)
 						return data;
 					} else {
 						return false;

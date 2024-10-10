@@ -11,7 +11,6 @@ export const SignUpForm = () => {
         password: "",
         telephone: "",
         country: "",
-        photo: "",
     });
     const [error, setError] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null); 
@@ -143,20 +142,6 @@ export const SignUpForm = () => {
                                         onChange={handleChange}
                                         placeholder="Ingresa tu contraseña"
                                         required
-                                    />
-                                </div>
-                                <div className="form-group mb-3">
-                                    <label htmlFor="photo" className="form-label">
-                                        Foto (URL)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="photo"
-                                        name="photo"
-                                        value={formData.photo}
-                                        onChange={handleChange}
-                                        placeholder="Ingresa la URL de tu foto"
                                     />
                                 </div>
                                 {error && <p className="text-danger text-center">{error}</p>}
