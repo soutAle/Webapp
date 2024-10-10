@@ -11,6 +11,7 @@ import { Footer } from "./component/Footer.jsx";
 import { Offers } from "./pages/Offers.jsx";
 import { About } from "./pages/About.jsx";
 import { Contact } from "./pages/Contact.jsx";
+import { SignUp } from "./pages/SignUp.jsx";
 
 
 
@@ -34,6 +35,7 @@ const Layout = () => {
                         <Route element={<Offers />} path="/offers" />
                         <Route element={<About />} path="/about" />
                         <Route element={<Contact />} path="/contact" />
+                        <Route element={<SignUp />} path="/signup" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
