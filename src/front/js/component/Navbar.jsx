@@ -15,7 +15,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar custom-navbar">
 			<div className="container-fluid">
-				<Link className="navbar-brand ms-3 text-white" to={"/"}>
+				<Link className="navbar-brand ms-3 text-white" to="/">
 					Finder
 				</Link>
 				<button
@@ -48,12 +48,12 @@ export const Navbar = () => {
 					<div className="offcanvas-body">
 						<ul className="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3">
 							<li className="nav-item">
-								<Link className="nav-link active" aria-current="page" to={"/"}>
+								<Link className="nav-link active" aria-current="page" to="/">
 									Home
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to={"/"}>
+								<Link className="nav-link" to="/">
 									Link
 								</Link>
 							</li>
@@ -69,12 +69,12 @@ export const Navbar = () => {
 								</Link>
 								<ul className="dropdown-menu dropdown-menu-dark">
 									<li>
-										<Link className="dropdown-item" to={"/profiledeveloper"}>
+										<Link className="dropdown-item" to="/profiledeveloper">
 											Perfil
 										</Link>
 									</li>
 									<li>
-										<Link className="dropdown-item" to={"/myoffers"}>
+										<Link className="dropdown-item" to="/myoffers">
 											Mis Ofertas
 										</Link>
 									</li>
@@ -82,7 +82,7 @@ export const Navbar = () => {
 										<hr className="dropdown-divider" />
 									</li>
 									<li>
-										<Link className="dropdown-item" to={"/"} onClick={handleLogOutRedirect}>
+										<Link className="dropdown-item" onClick={handleLogOutRedirect} to="/">
 											Cerrar Sesión
 										</Link>
 									</li>
@@ -106,7 +106,7 @@ export const Navbar = () => {
 				<div className="d-none d-md-flex pe-5">
 					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
 						<li className="nav-item">
-							<Link className="nav-link active" aria-current="page" to={"/"}>
+							<Link className="nav-link active" aria-current="page" to="/">
 								Inicio
 							</Link>
 						</li>
@@ -116,7 +116,7 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link active" aria-current="page" to={"/"}>
+							<Link className="nav-link active" aria-current="page" to="/">
 								Inicio
 							</Link>
 						</li>
@@ -138,12 +138,12 @@ export const Navbar = () => {
 							</Link>
 							<ul className="dropdown-menu">
 								<li>
-									<Link className="dropdown-item" to={"/"}>
+									<Link className="dropdown-item" to="/">
 										Perfil
 									</Link>
 								</li>
 								<li>
-									<Link className="dropdown-item" to={"/"}>
+									<Link className="dropdown-item" to="/">
 										Mis Ofertas
 									</Link>
 								</li>
